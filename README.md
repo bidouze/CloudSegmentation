@@ -38,6 +38,11 @@ Once you have downloaded it, add all the files on the data folder on this reposi
 streamlit run /path/Projet_Resnet.py
 ~~~
 
+
+### What you can do in the streamlit ###
+
+You can use the buttons in the streamlit Visualize an image, Visualize train, Visualize test to test the model on randomly drawn images from the dataset.
+
 #### Notes ####
 Please note that the model is not trained in the streamlit file for obvious reasons but if you go on the python file you can have access to commented lines highlighting the cells for training in case you want to try and train it differently.
 
