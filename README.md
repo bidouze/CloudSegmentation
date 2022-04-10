@@ -32,7 +32,7 @@ In order to install the required python packages run the following:
 ### Add the data ###
 
 You have to download the data from the kaggle competition https://www.kaggle.com/competitions/understanding_cloud_organization/data
-Once you have downloaded it, add all the files on the data folder on this repository and you are set to go. Run the following cell on your terminal in order to launch the streamlit file.
+Once you have downloaded it, add all the files on the data folder on this repository and you are set to go. Normally, you should run utils to create the annotated images but it's already given in this repository. Run the following cell on your terminal in order to launch the streamlit file.
 
 ~~~
 streamlit run /path/Projet_Resnet.py
