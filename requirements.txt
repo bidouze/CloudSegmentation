@@ -1,0 +1,8 @@
+albumentations
+matplotlib
+pandas 
+numpy 
+opencv-python
+seaborn
+keras
+segmentation-models
