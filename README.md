@@ -21,6 +21,14 @@ climate models. By classifying these cloud formations, researchers hope to bette
 
 You will find in this repository a streamlit presentation of the latest version of our code in the project. 
 
+### Requirements ###
+
+In order to install the required python packages run the following:
+
+~~~
+ pip install -r requirements.txt
+ ~~~
+
 ### Add the data ###
 
 You have to download the data from the kaggle competition https://www.kaggle.com/competitions/understanding_cloud_organization/data
