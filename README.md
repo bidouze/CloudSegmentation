@@ -1,5 +1,5 @@
 # CloudSegmentation
-## Project Deep Learning 2022 ##
+## Project Deep Learning 2022 Ismail Benaija - Ayoub Bakkoury - Othmane Baddou##
 
 
 This project is inspired by a Kaggle competition initiated
