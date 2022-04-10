@@ -6,3 +6,4 @@ opencv-python
 seaborn
 keras
 segmentation-models
+streamlit

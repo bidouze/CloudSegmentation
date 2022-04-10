@@ -1,8 +1,8 @@
 import streamlit as st
 import os
-st.title('Loopy Clouds')
+st.title('Cloud Segmentation')
 
-st.markdown("Ce projet est à l’origine une compétition Kaggle à l’initiative du Max Planck Institute of Meteorology. Le but de cette compétition est de pouvoir identifier quatre types de formations nuageuses (« gravel », « fish », « flower » et « sugar ») sur des images satellite. \n Ces formations nuageuses jouent un rôle déterminant sur le climat et sont difficiles à comprendre et à implémenter dans des modèles climatiques. En classant ces formations nuageuses, les chercheurs espèrent mieux les comprendre et améliorer les modèles existants.")
+st.markdown("This project is inspired by a Kaggle competition initiated by the Max Planck Institute of Meteorology. The goal of the competition is to identify cloud formations on satellite images. It is proposed to identify 4 different classes of cloud formations. These cloud formations play a determining role on the climate and are difficult to understand and to implement in climate models. By classifying these cloud formations, researchers hope to better understand them and improve existing models.")
 
 from PIL import Image
 path_base = os.path.dirname(__file__)
@@ -631,3 +631,38 @@ if st.button("Visualisation test"):
   st.pyplot(visu_demo_test(test_imgs_folder, model))
   st.balloons()
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
+
+st.header("Finetuning encoder: Unfreezing")
+
+
+st.code('''
+model = Unet('resnet34', encoder_weights='imagenet' ,classes = 4, input_shape = (256, 416, 3), activation = 'sigmoid')
+model.summary()
+''', language = "python")
+
+img = Image.open(path_base+"/model_unfreezed.png")
+st.image(img)
+
+st.code('''
+model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(os.path.join(checkpoint_folder,"weights_3.{epoch:02d}-{val_loss:.2f}.h5"),
+    save_weights_only=True,
+    monitor='val_dice_coef',
+    save_best_only=True)
+''', language = "python")
+
+with st.echo():
+  model.compile(optimizer = optimizer, loss = masked_bce_dice_loss, metrics = [dice_coef, bce_dice_loss, 'acc']) 
+
+model.load_weights(os.path.join(checkpoint_folder,'last_wights_aug_unfreezed.h5'))
+
+st.code('''
+history = model.fit(data_generator_train, steps_per_epoch=data_generator_train.__len__(),
+                    callbacks= [model_checkpoint_callback ,reduce_lr],
+                    epochs = 5,
+                    workers = -1,
+                    validation_data = data_generator_val,
+                    validation_steps = data_generator_val.__len__())
+''', language = "python")
+plot1_img = Image.open(path_base+"/fit_unfreezed.png")
+st.image(plot1_img)
