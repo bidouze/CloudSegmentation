@@ -1,4 +1,6 @@
 # CloudSegmentation
+
+The full research paper can be found at this link [paper](https://github.com/bidouze/CloudSegmentation/blob/main/Research%20_paper.pdf)
 ## Project Deep Learning 2022 Ismail Benaija - Ayoub Bakkoury - Othmane Baddou ##
 
 
